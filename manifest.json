@@ -1,0 +1,31 @@
+{
+  "manifest_version": 2,
+  "name": "How Long to Read",
+  "version": "1.0",
+  "description": "Estimates how long it would take to read a web page",
+  "author": "Daniel Rozenberg",
+  "homepage_url": "https://github.com/danielrozenberg/how-long-to-read",
+  "icons": {
+    "48": "icons/icon.svg",
+    "96": "icons/icon.svg"
+  },
+  "background": {
+    "scripts": [
+      "background_scripts/script.js"
+    ]
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "*://*/*"
+      ],
+      "js": [
+        "content_scripts/script.js"
+      ]
+    }
+  ],
+  "browser_action": {
+    "default_icon": "icons/icon.svg",
+    "default_title": "How Long to Read"
+  }
+}

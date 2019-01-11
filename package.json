@@ -1,0 +1,28 @@
+{
+  "name": "how-long-to-read",
+  "version": "1.0.0",
+  "description": "Get a time estimate for how long it would take to read a web page",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/danielrozenberg/how-long-to-read"
+  },
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack",
+    "watch": "webpack --watch --mode=development",
+    "clean": "rm -r dist"
+  },
+  "author": "Daniel Rozenberg",
+  "license": "ISC",
+  "dependencies": {
+    "extract-main-text": "1.0.2",
+    "reading-time": "1.1.3"
+  },
+  "devDependencies": {
+    "copy-webpack-plugin": "4.6.0",
+    "eslint": "5.12.0",
+    "webpack": "4.28.4",
+    "webpack-command": "0.4.2"
+  }
+}
