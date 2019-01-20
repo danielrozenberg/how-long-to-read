@@ -22,7 +22,7 @@
   "devDependencies": {
     "copy-webpack-plugin": "4.6.0",
     "eslint": "5.12.1",
-    "webpack": "4.28.4",
+    "webpack": "4.29.0",
     "webpack-command": "0.4.2"
   }
 }
