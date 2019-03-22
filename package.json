@@ -20,7 +20,7 @@
     "reading-time": "1.1.3"
   },
   "devDependencies": {
-    "copy-webpack-plugin": "5.0.1",
+    "copy-webpack-plugin": "5.0.2",
     "eslint": "5.15.3",
     "webpack": "4.29.6",
     "webpack-command": "0.4.2"
