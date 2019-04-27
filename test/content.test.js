@@ -27,11 +27,11 @@ describe('content', () => {
         const {estimatePromise} = require('../content_scripts/script');
         estimatePromise.then(() => {
           expect(browser.runtime.sendMessage).toHaveBeenCalledWith(
-            expect.objectContaining({
-              minutes,
-              words: paragraphs * ducks,
-            }));
-            done();
+              expect.objectContaining({
+                minutes,
+                words: paragraphs * ducks,
+              }));
+          done();
         });
       });
 });

@@ -1,28 +1,28 @@
 const CopyWebpackPlugin = require('copy-webpack-plugin');
-const path = require("path");
+const path = require('path');
 
 module.exports = {
-  mode: "production",
+  mode: 'production',
   node: {
-    fs: "empty",
-    net: "empty",
-    tls: "empty"
+    fs: 'empty',
+    net: 'empty',
+    tls: 'empty',
   },
   entry: {
-    background_scripts: "./background_scripts/script.js",
-    content_scripts: "./content_scripts/script.js"
+    background_scripts: './background_scripts/script.js',
+    content_scripts: './content_scripts/script.js',
   },
   output: {
-    path: path.resolve(__dirname, "dist"),
-    filename: "[name]/script.js"
+    path: path.resolve(__dirname, 'dist'),
+    filename: '[name]/script.js',
   },
   plugins: [
     new CopyWebpackPlugin([
       {
-        from: "icons",
-        to: "icons"
+        from: 'icons',
+        to: 'icons',
       }, {
-        from: "manifest.json"
-      }])
-  ]
+        from: 'manifest.json',
+      }]),
+  ],
 };
