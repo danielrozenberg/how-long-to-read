@@ -11,4 +11,4 @@ estimatePromise.then((text) => {
   browser.runtime.sendMessage(readingStats);
 });
 
-exports.estimatePromise();
+exports.estimatePromise = estimatePromise;
