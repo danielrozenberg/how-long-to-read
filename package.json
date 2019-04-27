@@ -8,7 +8,7 @@
   },
   "main": "script.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "build": "webpack",
     "watch": "webpack --watch --mode=development",
     "clean": "rm -r dist"
@@ -22,7 +22,14 @@
   "devDependencies": {
     "copy-webpack-plugin": "5.0.3",
     "eslint": "5.16.0",
+    "jest": "24.7.1",
+    "jest-webextension-mock": "3.5.0",
     "webpack": "4.30.0",
     "webpack-command": "0.4.2"
+  },
+  "jest": {
+    "setupFiles": [
+      "jest-webextension-mock"
+    ]
   }
 }
