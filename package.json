@@ -25,7 +25,7 @@
     "eslint-config-google": "0.13.0",
     "jest": "24.8.0",
     "jest-webextension-mock": "3.5.0",
-    "webpack": "4.33.0",
+    "webpack": "4.34.0",
     "webpack-command": "0.4.2"
   },
   "jest": {
