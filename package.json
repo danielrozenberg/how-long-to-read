@@ -20,7 +20,7 @@
     "reading-time": "1.2.0"
   },
   "devDependencies": {
-    "copy-webpack-plugin": "5.0.3",
+    "copy-webpack-plugin": "5.0.4",
     "eslint": "6.1.0",
     "eslint-config-google": "0.13.0",
     "jest": "24.8.0",
