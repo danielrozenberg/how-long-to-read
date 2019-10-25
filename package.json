@@ -21,7 +21,7 @@
   },
   "devDependencies": {
     "copy-webpack-plugin": "5.0.4",
-    "eslint": "6.5.1",
+    "eslint": "6.6.0",
     "eslint-config-google": "0.14.0",
     "jest": "24.9.0",
     "jest-webextension-mock": "3.5.0",
