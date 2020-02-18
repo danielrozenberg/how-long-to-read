@@ -3,7 +3,7 @@ const readingTime = require('reading-time');
 
 const estimatePromise = new BodyExtractor(
     {html: document.body.outerHTML},
-    {debug: false},
+    {debug: false}
 ).analyze();
 
 estimatePromise.then((text) => {
