@@ -3,8 +3,7 @@ const readingTime = require('reading-time');
 
 const textPromise = new BodyExtractor(
     {html: document.body.outerHTML},
-    {debug: false}
-).analyze();
+    {debug: false}).analyze();
 
 const optionsPromise = browser.storage.sync.get('wordsPerMinute');
 

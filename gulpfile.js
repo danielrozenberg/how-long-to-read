@@ -36,8 +36,7 @@ exports.build = parallel(
           .pipe(dest(`./dist/${directory}`));
       subTask.displayName = `build:${directory}`;
       return subTask;
-    }
-    ));
+    }));
 
 exports.watch = task('watch', () => {
   return watch(
