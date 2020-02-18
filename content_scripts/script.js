@@ -14,3 +14,4 @@ Promise.all([textPromise, optionsPromise]).then((results) => {
 });
 
 exports.textPromise = textPromise;
+exports.optionsPromise = optionsPromise;
