@@ -6,8 +6,11 @@ const textPromise = new BodyExtractor(
     {debug: false}
 ).analyze();
 
-textPromise.then((text) => {
-  const readingStats = readingTime(text);
+const optionsPromise = browser.storage.sync.get('wordsPerMinute');
+
+Promise.all([textPromise, optionsPromise]).then((results) => {
+  const [text, options] = results;
+  const readingStats = readingTime(text, options);
   browser.runtime.sendMessage(readingStats);
 });
 
