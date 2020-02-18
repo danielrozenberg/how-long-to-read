@@ -1,14 +1,14 @@
 const BodyExtractor = require('extract-main-text');
 const readingTime = require('reading-time');
 
-const estimatePromise = new BodyExtractor(
+const textPromise = new BodyExtractor(
     {html: document.body.outerHTML},
     {debug: false}
 ).analyze();
 
-estimatePromise.then((text) => {
+textPromise.then((text) => {
   const readingStats = readingTime(text);
   browser.runtime.sendMessage(readingStats);
 });
 
-exports.estimatePromise = estimatePromise;
+exports.textPromise = textPromise;

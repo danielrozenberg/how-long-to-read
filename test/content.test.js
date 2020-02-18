@@ -24,8 +24,8 @@ describe('content', () => {
         const divInner = new Array(paragraphs).fill(paragraph).join('\n');
         document.body.outerHTML = HTML_TEMPLATE.replace('$DIV', divInner);
 
-        const {estimatePromise} = require('../content_scripts/script');
-        estimatePromise.then(() => {
+        const {textPromise} = require('../content_scripts/script');
+        textPromise.then(() => {
           expect(browser.runtime.sendMessage).toHaveBeenCalledWith(
               expect.objectContaining({
                 minutes,
