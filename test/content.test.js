@@ -58,7 +58,7 @@ describe('content', () => {
           optionsPromise,
         } = require('../content_scripts/script');
         await expect(textPromise).resolves;
-        await expect(optionsPromise).resolves;
+        await expect(optionsPromise).resolves
             .toEqual(expect.objectContaining({
               wordsPerMinute,
             }));
