@@ -9,9 +9,9 @@
   "main": "script.js",
   "scripts": {
     "test": "eslint . && jest --verbose",
-    "build": "webpack",
-    "watch": "webpack --watch --mode=development",
-    "clean": "rm -r dist"
+    "build": "rm -rf dist && gulp build",
+    "watch": "rm -rf dist && gulp watch",
+    "clean": "rm -rf dist"
   },
   "author": "Daniel Rozenberg",
   "license": "ISC",
@@ -20,13 +20,14 @@
     "reading-time": "1.2.0"
   },
   "devDependencies": {
-    "copy-webpack-plugin": "5.1.1",
     "eslint": "6.8.0",
     "eslint-config-google": "0.14.0",
+    "gulp": "4.0.2",
+    "gulp-browserify": "0.5.1",
+    "gulp-cli": "2.2.0",
     "jest": "25.1.0",
     "jest-webextension-mock": "3.5.0",
-    "webpack": "4.41.6",
-    "webpack-command": "0.5.0"
+    "watchify": "3.11.1"
   },
   "jest": {
     "setupFiles": [
