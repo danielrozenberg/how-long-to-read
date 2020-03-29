@@ -16,7 +16,6 @@
   "author": "Daniel Rozenberg",
   "license": "ISC",
   "dependencies": {
-    "extract-main-text": "1.0.3",
     "reading-time": "1.2.0"
   },
   "devDependencies": {
