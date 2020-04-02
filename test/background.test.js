@@ -12,15 +12,16 @@ describe('background', () => {
   test.each([
     ['1m', 0.6],
     ['12m', 12.43],
-    ['1h', 59.5],
-    ['1h', 119],
+    ['60m', 59.5],
+    ['90m', 90.2],
+    ['1h', 90.6],
     ['2h', 120],
     ['10h+', 600],
   ])('show an estimate of %s based on %d minutes', (text, minutes) => {
     backgroundMessageListener({minutes, words: 50}, sender);
     expect(browser.browserAction.enable).toHaveBeenCalledWith(sender.tab.id);
     expect(browser.browserAction.setTitle).toHaveBeenCalledWith({
-      title: 'Estimated based on ~50 words',
+      title: 'Estimated based on ~50 words\n(Click to refresh estimate)',
       tabId: sender.tab.id,
     });
     expect(browser.browserAction.setBadgeText).toHaveBeenCalledWith({
