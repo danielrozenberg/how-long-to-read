@@ -1,7 +1,7 @@
 const wordsPerMinuteElement =document.getElementById('wordsPerMinute');
 
-wordsPerMinuteElement.addEventListener('change', (event) => {
-  browser.storage.sync.set({
+wordsPerMinuteElement.addEventListener('change', async (event) => {
+  await browser.storage.sync.set({
     wordsPerMinute: event.target.value,
   });
 });
