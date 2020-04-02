@@ -4,7 +4,9 @@ describe('background', () => {
 
   beforeAll(() => {
     browser.runtime.onMessage.addListener.mockImplementation(
-        (listener) => backgroundMessageListener = listener);
+        (listener) => {
+          backgroundMessageListener = listener;
+        });
 
     require('../background_scripts/script');
   });
