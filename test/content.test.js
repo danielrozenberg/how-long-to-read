@@ -1,12 +1,4 @@
-const HTML_TEMPLATE = `<!doctype html>
-<html>
-<head>
-  <title>Super short document</title>
-</head>
-<body>
-  <div>$DIV</div>
-</body>
-</html>`;
+const {estimateReadingTime} = require('../content_scripts/script');
 
 describe('content', () => {
   beforeEach(() => {
@@ -17,27 +9,19 @@ describe('content', () => {
   });
 
   test.each([
-    [2.5, 5, 100],
-    [4.8, 80, 12],
-    [0.3, 2, 30],
-  ])('estimate %d minutes based on %d paragraphs of %d "ducks"',
-      async (minutes, paragraphs, ducks) => {
-        const paragraph = `<p>${new Array(ducks).fill('ducks').join(' ')}</p>`;
-        const divInner = new Array(paragraphs).fill(paragraph).join('\n');
-        document.body.outerHTML = HTML_TEMPLATE.replace('$DIV', divInner);
+    [2.5, 500],
+    [4.8, 960],
+    [0.3, 60],
+  ])('estimate %d minutes based on %d "ducks" with default reading speed',
+      async (minutes, ducks) => {
+        document.body.innerText = new Array(ducks).fill('ducks').join(' ');
 
-        const {
-          textPromise,
-          optionsPromise,
-        } = require('../content_scripts/script');
-        await expect(textPromise).resolves
-            .toEqual(expect.stringContaining('ducks'));
-        await expect(optionsPromise).resolves
-            .toEqual(expect.objectContaining({}));
+        await estimateReadingTime();
+
         expect(browser.runtime.sendMessage).toHaveBeenCalledWith(
             expect.objectContaining({
               minutes,
-              words: paragraphs * ducks,
+              words: ducks,
             }));
       });
 
@@ -50,18 +34,10 @@ describe('content', () => {
           wordsPerMinute,
         }));
 
-        const paragraph = `<p>${new Array(500).fill('ducks').join(' ')}</p>`;
-        document.body.outerHTML = HTML_TEMPLATE.replace('$DIV', paragraph);
+        document.body.innerText = new Array(500).fill('ducks').join(' ');
 
-        const {
-          textPromise,
-          optionsPromise,
-        } = require('../content_scripts/script');
-        await expect(textPromise).resolves;
-        await expect(optionsPromise).resolves
-            .toEqual(expect.objectContaining({
-              wordsPerMinute,
-            }));
+        await estimateReadingTime();
+
         expect(browser.runtime.sendMessage).toHaveBeenCalledWith(
             expect.objectContaining({
               minutes,
