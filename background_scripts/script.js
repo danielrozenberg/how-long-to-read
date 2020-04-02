@@ -55,4 +55,7 @@ browser.runtime.onMessage.addListener((stats, sender) => {
     text: badgeText,
     tabId: sender.tab.id,
   });
+  browser.browserAction.onClicked.addListener(() => {
+    browser.tabs.sendMessage(sender.tab.id, 'estimateReadingTime');
+  });
 });
