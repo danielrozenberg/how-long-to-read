@@ -16,12 +16,12 @@
   "author": "Daniel Rozenberg",
   "license": "ISC",
   "devDependencies": {
-    "eslint": "7.2.0",
+    "eslint": "7.4.0",
     "eslint-config-google": "0.14.0",
     "gulp": "4.0.2",
     "gulp-browserify": "0.5.1",
     "gulp-cli": "2.3.0",
-    "jest": "26.0.1",
+    "jest": "26.1.0",
     "jest-webextension-mock": "3.6.0",
     "watchify": "3.11.1"
   },
