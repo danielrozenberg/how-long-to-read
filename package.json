@@ -21,7 +21,7 @@
     "gulp": "4.0.2",
     "gulp-browserify": "0.5.1",
     "gulp-cli": "2.3.0",
-    "jest": "26.6.3",
+    "jest": "27.0.4",
     "jest-webextension-mock": "3.7.14",
     "watchify": "4.0.0"
   },
