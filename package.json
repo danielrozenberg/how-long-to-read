@@ -28,6 +28,7 @@
   "jest": {
     "setupFiles": [
       "jest-webextension-mock"
-    ]
+    ],
+    "testEnvironment": "jsdom"
   }
 }
