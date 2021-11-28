@@ -7,7 +7,7 @@ const allWords = /[\u0041-\u005A\u0061-\u007A\u00AA\u00B5\u00BA\u00C0-\u00D6\u00
 async function estimateReadingTime() {
   const options = await browser.storage.sync.get('wordsPerMinute');
   const wordsPerMinute = options.wordsPerMinute || 200;
-  const words = (document.body.innerText.match(allWords) || []).length;
+  const words = (document.body.innerText?.match(allWords) || []).length;
   const minutes = (words / wordsPerMinute);
   await browser.runtime.sendMessage({words, minutes});
 }
