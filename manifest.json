@@ -9,22 +9,14 @@
     "48": "icons/icon.svg",
     "96": "icons/icon.svg"
   },
-  "permissions": [
-    "storage"
-  ],
+  "permissions": ["storage"],
   "background": {
-    "scripts": [
-      "background_scripts/script.js"
-    ]
+    "scripts": ["background_scripts/script.js"]
   },
   "content_scripts": [
     {
-      "matches": [
-        "*://*/*"
-      ],
-      "js": [
-        "content_scripts/script.js"
-      ]
+      "matches": ["<all_urls>"],
+      "js": ["content_scripts/script.js"]
     }
   ],
   "browser_action": {
