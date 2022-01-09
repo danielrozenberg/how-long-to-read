@@ -8,22 +8,15 @@
   },
   "main": "script.js",
   "scripts": {
-    "test": "eslint . && jest --verbose",
-    "build": "rm -rf dist && gulp build",
-    "watch": "rm -rf dist && gulp watch",
-    "clean": "rm -rf dist"
+    "test": "eslint . && jest --verbose"
   },
   "author": "Daniel Rozenberg",
   "license": "ISC",
   "devDependencies": {
     "eslint": "8.6.0",
     "eslint-config-google": "0.14.0",
-    "gulp": "4.0.2",
-    "gulp-browserify": "0.5.1",
-    "gulp-cli": "2.3.0",
     "jest": "27.4.5",
-    "jest-webextension-mock": "3.7.19",
-    "watchify": "4.0.0"
+    "jest-webextension-mock": "3.7.19"
   },
   "jest": {
     "setupFiles": [
