@@ -13,7 +13,7 @@
   "author": "Daniel Rozenberg",
   "license": "ISC",
   "devDependencies": {
-    "eslint": "8.6.0",
+    "eslint": "8.7.0",
     "eslint-config-google": "0.14.0",
     "jest": "27.4.7",
     "jest-webextension-mock": "3.7.19"
