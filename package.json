@@ -13,11 +13,11 @@
   "author": "Daniel Rozenberg",
   "license": "ISC",
   "devDependencies": {
-    "eslint": "8.29.0",
+    "eslint": "8.30.0",
     "eslint-config-google": "0.14.0",
     "jest": "29.3.1",
     "jest-environment-jsdom": "29.3.1",
-    "jest-webextension-mock": "3.8.6"
+    "jest-webextension-mock": "3.8.7"
   },
   "jest": {
     "setupFiles": [
