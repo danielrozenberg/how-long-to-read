@@ -1,18 +1,10 @@
 {
   "root": true,
-  "extends": [
-    "eslint:recommended",
-    "google"
-  ],
-  "parserOptions": {
-    "ecmaVersion": 2021
-  },
+  "extends": ["eslint:recommended", "prettier"],
   "env": {
-    "amd": true,
     "browser": true,
-    "es6": true,
+    "es2024": true,
     "jest": true,
-    "node": true,
     "webextensions": true
   }
 }
