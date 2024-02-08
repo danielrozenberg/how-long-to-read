@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <style>
+    html,
+    body {
+      background: transparent;
+      box-sizing: border-box;
+      color: #222426;
+      cursor: default;
+      display: flex;
+      flex-direction: column;
+      font: caption;
+      height: 18rem;
+      margin: 0;
+      padding: 0;
+      user-select: none;
+    }
+
+    body * {
+      box-sizing: border-box;
+      text-align: start;
+    }
+
+    .panel-section {
+      display: flex;
+      flex-direction: row;
+    }
+
+    .panel-section-formElements {
+      flex-direction: column;
+      padding: 16px;
+    }
+
+    .panel-formElements-item {
+      align-items: center;
+      display: flex;
+      flex-direction: row;
+      margin-bottom: 12px;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+
+      & label {
+        flex-shrink: 0;
+        margin-right: 6px;
+        text-align: right;
+      }
+
+      & select {
+        flex-grow: 1;
+      }
+    }
+
+    @media (prefers-color-scheme: dark) {
+      body {
+        background-color: rgb(35, 34, 43);
+        color: rgb(251, 251, 254)
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="panel-section panel-section-formElements">
+    <div class="panel-formElements-item">
+      <label for="wordsPerMinute">Reading speed</label>
+      <select id="wordsPerMinute">
+        <option value="100">Slow (100 words-per-minute)</option>
+        <option value="150">Slower (150 words-per-minute)</option>
+        <option value="200">Default (200 words-per-minute)</option>
+        <option value="250">Faster (250 words-per-minute)</option>
+        <option value="300">Fast (300 words-per-minute)</option>
+        <option value="300">Fastest (450 words-per-minute)</option>
+        <option value="400">Speed-reader (600 words-per-minute)</option>
+      </select>
+    </div>
+  </div>
+
+
+  <script src="options.js"></script>
+</body>
+</html>

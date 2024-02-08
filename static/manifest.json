@@ -6,25 +6,25 @@
   "author": "Daniel Rozenberg",
   "homepage_url": "https://github.com/danielrozenberg/how-long-to-read",
   "icons": {
-    "48": "icons/icon.svg",
-    "96": "icons/icon.svg"
+    "48": "icon.svg",
+    "96": "icon.svg"
   },
   "permissions": ["storage"],
   "background": {
-    "scripts": ["background_scripts/script.js"]
+    "scripts": ["background.js"]
   },
   "content_scripts": [
     {
       "matches": ["<all_urls>"],
-      "js": ["content_scripts/script.js"]
+      "js": ["content.js"]
     }
   ],
   "browser_action": {
-    "default_icon": "icons/icon.svg",
+    "default_icon": "icon.svg",
     "default_title": "How Long to Read"
   },
   "options_ui": {
-    "page": "options_ui/options.html",
+    "page": "options.html",
     "browser_style": true
   },
   "browser_specific_settings": {

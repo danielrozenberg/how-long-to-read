@@ -6,24 +6,29 @@
     "type": "git",
     "url": "https://github.com/danielrozenberg/how-long-to-read"
   },
-  "main": "script.js",
   "scripts": {
-    "test": "eslint . && jest --verbose"
+    "build": "npm run clean && npm run build:esbuild && npm run build:static",
+    "build:esbuild": "esbuild src/*.ts --bundle --sourcemap --outdir=dist/",
+    "build:static": "cp -r static/* dist/",
+    "clean": "rm -rf dist/ && mkdir dist/",
+    "lint": "eslint .",
+    "test": "jest"
   },
   "author": "Daniel Rozenberg",
   "license": "ISC",
   "devDependencies": {
+    "@types/jest": "29.5.12",
+    "@types/webextension-polyfill": "0.10.7",
+    "@typescript-eslint/eslint-plugin": "6.21.0",
+    "@typescript-eslint/parser": "6.21.0",
+    "esbuild": "0.20.0",
     "eslint": "8.56.0",
     "eslint-config-prettier": "9.1.0",
-    "jest": "29.7.0",
     "jest-environment-jsdom": "29.7.0",
     "jest-webextension-mock": "3.8.9",
-    "prettier": "3.2.5"
-  },
-  "jest": {
-    "setupFiles": [
-      "jest-webextension-mock"
-    ],
-    "testEnvironment": "jsdom"
+    "prettier": "3.2.5",
+    "ts-jest": "29.1.2",
+    "ts-node": "10.9.2",
+    "typescript": "5.3.3"
   }
 }

@@ -1,0 +1,10 @@
+{
+  "compilerOptions": {
+    "rootDir": ".",
+    "lib": ["DOM"],
+    "module": "CommonJS",
+    "target": "ESNext",
+    "strictNullChecks": true
+  },
+  "include": ["**/*.ts"]
+}
