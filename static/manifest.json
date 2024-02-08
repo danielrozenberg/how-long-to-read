@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "name": "How Long to Read",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "Estimates how long it would take to read a web page",
   "author": "Daniel Rozenberg",
   "homepage_url": "https://github.com/danielrozenberg/how-long-to-read",

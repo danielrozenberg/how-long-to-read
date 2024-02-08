@@ -1,6 +1,6 @@
 {
   "name": "how-long-to-read",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "Get a time estimate for how long it would take to read a web page",
   "repository": {
     "type": "git",
