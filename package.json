@@ -17,18 +17,18 @@
   "author": "Daniel Rozenberg",
   "license": "ISC",
   "devDependencies": {
-    "@types/jest": "29.5.12",
-    "@types/webextension-polyfill": "0.10.7",
-    "@typescript-eslint/eslint-plugin": "7.9.0",
-    "@typescript-eslint/parser": "7.9.0",
+    "@types/jest": "29.5.14",
+    "@types/webextension-polyfill": "0.12.3",
+    "@typescript-eslint/eslint-plugin": "7.18.0",
+    "@typescript-eslint/parser": "7.18.0",
     "esbuild": "0.21.3",
-    "eslint": "8.57.0",
+    "eslint": "8.57.1",
     "eslint-config-prettier": "9.1.0",
     "jest-environment-jsdom": "29.7.0",
-    "jest-webextension-mock": "3.8.16",
-    "prettier": "3.2.5",
-    "ts-jest": "29.1.2",
+    "jest-webextension-mock": "3.9.1",
+    "prettier": "3.5.3",
+    "ts-jest": "29.3.4",
     "ts-node": "10.9.2",
-    "typescript": "5.4.5"
+    "typescript": "5.8.3"
   }
 }
