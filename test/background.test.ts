@@ -1,4 +1,4 @@
-import { describe, expect, it, jest } from '@jest/globals';
+import { beforeAll, describe, expect, it, jest } from '@jest/globals';
 
 import { backgroundMessageListener } from '../src/background';
 
@@ -8,6 +8,12 @@ declare const browser: jest.MockedObject<Browser>;
 
 describe('background', () => {
   const sender = { tab: { id: 123 } } as Partial<Runtime.MessageSender>;
+
+  beforeAll(() => {
+    // TODO: this is a workaround for the missing `browser.action` mock in `jest-webextension-mock`.
+    // Remove this when fixed: https://github.com/RickyMarou/jest-webextension-mock/issues/4
+    browser.action = browser.browserAction;
+  });
 
   it.each([
     ['1m', 0.6],
