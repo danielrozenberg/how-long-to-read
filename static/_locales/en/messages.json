@@ -1,0 +1,42 @@
+{
+  "extensionName": {
+    "message": "How Long to Read",
+    "description": "Name of the extension."
+  },
+  "extensionDescription": {
+    "message": "Estimates how long it would take to read a web page",
+    "description": "Description of the extension."
+  },
+  "optionsReadingSpeedLabel": {
+    "message": "Reading speed",
+    "description": "Label for the reading speed option in the settings."
+  },
+  "optionsReadingSpeedSlow": {
+    "message": "Slow (100 words per minute)",
+    "description": "Description for the Slow reading speed option in the settings."
+  },
+  "optionsReadingSpeedSlower": {
+    "message": "Slower (150 words per minute)",
+    "description": "Description for the Slower reading speed option in the settings."
+  },
+  "optionsReadingSpeedDefault": {
+    "message": "Default (200 words per minute)",
+    "description": "Description for the Default reading speed option in the settings."
+  },
+  "optionsReadingSpeedFaster": {
+    "message": "Faster (250 words per minute)",
+    "description": "Description for the Faster reading speed option in the settings."
+  },
+  "optionsReadingSpeedFast": {
+    "message": "Fast (300 words per minute)",
+    "description": "Description for the Fast reading speed option in the settings."
+  },
+  "optionsReadingSpeedFastest": {
+    "message": "Fastest (450 words per minute)",
+    "description": "Description for the Fastest reading speed option in the settings."
+  },
+  "optionsReadingSpeedSpeedReader": {
+    "message": "Speed-reader (600 words per minute)",
+    "description": "Description for the Speed-reader reading speed option in the settings."
+  }
+}

@@ -8,7 +8,7 @@ declare const browser: Browser;
  */
 function prettyRound(num: number): string {
   const numAsString = String(num);
-  const atLeastThreeDigitsMatch = numAsString.match(/(\d{2})(\d)(\d*)/);
+  const atLeastThreeDigitsMatch = /(\d{2})(\d)(\d*)/.exec(numAsString);
   if (!atLeastThreeDigitsMatch) {
     // Less than 3 digits, just return it as-is.
     return numAsString;
@@ -23,19 +23,34 @@ function prettyRound(num: number): string {
 
   // The third digit is 5 or higher, so round up.
   const roundedPrefix = Number(prefix) + 1;
-  return Number(`${roundedPrefix}0${zeroesSuffix}`).toLocaleString();
+  return Number(`${roundedPrefix.toFixed(0)}0${zeroesSuffix}`).toLocaleString();
 }
 
-export function backgroundMessageListener(
-  stats: StatsMessage,
+export async function backgroundMessageListener(
+  message: unknown,
   sender: Runtime.MessageSender,
 ) {
   const tabId = sender.tab?.id;
   if (!tabId) {
-    console.error('browser.runtime.onMessage received from unknown tab sender');
+    console.error(
+      '[browser.runtime.onMessage] received from unknown tab sender',
+    );
     return;
   }
 
+  if (typeof message !== 'object' || message === null) {
+    console.error('[browser.runtime.onMessage] received non-object message');
+    return;
+  }
+
+  if (!('words' in message) || !('minutes' in message)) {
+    console.error(
+      '[browser.runtime.onMessage] received message without words or minutes',
+    );
+    return;
+  }
+
+  const stats = message as StatsMessage;
   const minutes = Math.round(stats.minutes);
   const words = prettyRound(stats.words);
 
@@ -48,21 +63,21 @@ export function backgroundMessageListener(
     if (minutes >= 600) {
       text = '10h+';
     } else if (minutes > 90) {
-      text = `${Math.floor(minutes / 60)}h`;
+      text = `${Math.floor(minutes / 60).toFixed(0)}h`;
     } else {
-      text = `${minutes}m`;
+      text = `${minutes.toFixed(0)}m`;
     }
-    browser.browserAction.enable(tabId);
+    await browser.action.enable(tabId);
   } else {
     title = null;
     text = null;
-    browser.browserAction.disable(tabId);
+    await browser.action.disable(tabId);
   }
 
-  browser.browserAction.setTitle({ title, tabId });
-  browser.browserAction.setBadgeText({ text, tabId });
-  browser.browserAction.onClicked.addListener(() => {
-    browser.tabs.sendMessage(tabId, 'estimateReadingTime');
+  await browser.action.setTitle({ title, tabId });
+  await browser.action.setBadgeText({ text, tabId });
+  browser.action.onClicked.addListener(async () => {
+    await browser.tabs.sendMessage(tabId, 'estimateReadingTime');
   });
 }
 

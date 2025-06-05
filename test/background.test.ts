@@ -1,12 +1,15 @@
-import type { Browser, Runtime } from 'webextension-polyfill';
+import { describe, expect, it, jest } from '@jest/globals';
+
 import { backgroundMessageListener } from '../src/background';
 
-declare const browser: jest.MockedObjectDeep<Browser>;
+import type { Browser, Runtime } from 'webextension-polyfill';
+
+declare const browser: jest.MockedObject<Browser>;
 
 describe('background', () => {
   const sender = { tab: { id: 123 } } as Partial<Runtime.MessageSender>;
 
-  test.each([
+  it.each([
     ['1m', 0.6],
     ['12m', 12.43],
     ['60m', 59.5],
@@ -14,27 +17,29 @@ describe('background', () => {
     ['1h', 90.6],
     ['2h', 120],
     ['10h+', 600],
-  ])('show an estimate of %s based on %d minutes', (text, minutes) => {
-    backgroundMessageListener({ minutes, words: 50 }, sender);
-    expect(browser.browserAction.enable).toHaveBeenCalledWith(sender.tab?.id);
-    expect(browser.browserAction.setTitle).toHaveBeenCalledWith({
+  ])('show an estimate of %s based on %d minutes', async (text, minutes) => {
+    await backgroundMessageListener({ minutes, words: 50 }, sender);
+
+    expect(browser.action.enable).toHaveBeenCalledWith(sender.tab?.id);
+    expect(browser.action.setTitle).toHaveBeenCalledWith({
       title: 'Estimated based on ~50 words\n(Click to refresh estimate)',
       tabId: sender.tab?.id,
     });
-    expect(browser.browserAction.setBadgeText).toHaveBeenCalledWith({
+    expect(browser.action.setBadgeText).toHaveBeenCalledWith({
       text,
       tabId: sender.tab?.id,
     });
   });
 
-  test('hide the estimate when the text too short', () => {
-    backgroundMessageListener({ minutes: 0.4, words: 50 }, sender);
-    expect(browser.browserAction.disable).toHaveBeenCalledWith(sender.tab?.id);
-    expect(browser.browserAction.setTitle).toHaveBeenCalledWith({
+  it('hide the estimate when the text too short', async () => {
+    await backgroundMessageListener({ minutes: 0.4, words: 50 }, sender);
+
+    expect(browser.action.disable).toHaveBeenCalledWith(sender.tab?.id);
+    expect(browser.action.setTitle).toHaveBeenCalledWith({
       title: null,
       tabId: sender.tab?.id,
     });
-    expect(browser.browserAction.setBadgeText).toHaveBeenCalledWith({
+    expect(browser.action.setBadgeText).toHaveBeenCalledWith({
       text: null,
       tabId: sender.tab?.id,
     });

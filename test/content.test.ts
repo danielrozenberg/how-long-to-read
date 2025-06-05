@@ -1,17 +1,20 @@
+import { beforeEach, describe, expect, it, jest } from '@jest/globals';
+
 import { estimateReadingTime } from '../src/content';
+
 import type { Browser } from 'webextension-polyfill';
 
-declare const browser: jest.MockedObjectDeep<Browser>;
+declare const browser: jest.MockedObject<Browser>;
 
 describe('content', () => {
-  beforeEach(async () => {
+  beforeEach(() => {
     jest.clearAllMocks();
     jest.resetModules();
 
     browser.storage.sync.get.mockResolvedValue({ wordsPerMinute: 200 });
   });
 
-  test.each([
+  it.each([
     [2.5, 500],
     [4.8, 960],
     [0.3, 60],
@@ -31,7 +34,7 @@ describe('content', () => {
     },
   );
 
-  test.each([
+  it.each([
     [2.5, 200],
     [5, 100],
   ])(

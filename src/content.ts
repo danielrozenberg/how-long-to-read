@@ -1,5 +1,6 @@
-import type { Browser } from 'webextension-polyfill';
 import { StatsMessage } from './types/messages';
+
+import type { Browser } from 'webextension-polyfill';
 
 declare const browser: Browser;
 
@@ -13,15 +14,15 @@ export async function estimateReadingTime() {
   const { wordsPerMinute } = await browser.storage.sync.get({
     wordsPerMinute: 200,
   });
-  const words = (document.body.innerText?.match(allWords) ?? []).length;
+  const words = ((document.body.innerText || '').match(allWords) ?? []).length;
   const minutes = words / Number(wordsPerMinute);
   await browser.runtime.sendMessage({ words, minutes } as StatsMessage);
 }
 
-browser.runtime.onMessage.addListener((message) => {
+browser.runtime.onMessage.addListener(async (message: unknown) => {
   if (message === 'estimateReadingTime') {
-    estimateReadingTime();
+    await estimateReadingTime();
   }
 });
 
-estimateReadingTime();
+void estimateReadingTime();

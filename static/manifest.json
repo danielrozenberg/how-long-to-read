@@ -1,32 +1,34 @@
 {
-  "manifest_version": 2,
-  "name": "How Long to Read",
+  "manifest_version": 3,
+  "name": "__MSG_extensionName__",
   "version": "1.0.6",
-  "description": "Estimates how long it would take to read a web page",
+  "description": "__MSG_extensionDescription__",
   "author": "Daniel Rozenberg",
   "homepage_url": "https://github.com/danielrozenberg/how-long-to-read",
   "icons": {
-    "48": "icon.svg",
-    "96": "icon.svg"
+    "48": "icons/logo.svg",
+    "96": "icons/logo.svg"
   },
-  "permissions": ["storage"],
   "background": {
-    "scripts": ["background.js"]
+    "scripts": ["background.mjs"],
+    "type": "module"
   },
   "content_scripts": [
     {
-      "matches": ["<all_urls>"],
+      "matches": ["*://*/*"],
       "js": ["content.js"]
     }
   ],
-  "browser_action": {
-    "default_icon": "icon.svg",
+  "action": {
+    "default_icon": "icons/logo.svg",
     "default_title": "How Long to Read"
   },
   "options_ui": {
-    "page": "options.html",
-    "browser_style": true
+    "page": "options.html"
   },
+  "permissions": ["storage"],
+  "host_permissions": ["*://*/*"],
+  "default_locale": "en",
   "browser_specific_settings": {
     "gecko": {
       "id": "{dc5bb564-a9fe-4363-a72a-84f1499acf81}"

@@ -1,13 +1,17 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf-8">
+  <title data-i18n-id="extensionName"></title>
   <style>
+    :root {
+      color-scheme: light dark;
+    }
+
     html,
     body {
-      background: transparent;
+      background: light-dark(transparent, rgb(35, 34, 43));
       box-sizing: border-box;
-      color: #222426;
+      color: light-dark(hsl(210, 6%, 14%), rgb(251, 251, 254));
       cursor: default;
       display: flex;
       flex-direction: column;
@@ -53,32 +57,24 @@
         flex-grow: 1;
       }
     }
-
-    @media (prefers-color-scheme: dark) {
-      body {
-        background-color: rgb(35, 34, 43);
-        color: rgb(251, 251, 254)
-      }
-    }
   </style>
 </head>
 <body>
   <div class="panel-section panel-section-formElements">
     <div class="panel-formElements-item">
-      <label for="wordsPerMinute">Reading speed</label>
+      <label for="wordsPerMinute" data-i18n-id="optionsReadingSpeedLabel"></label>
       <select id="wordsPerMinute">
-        <option value="100">Slow (100 words-per-minute)</option>
-        <option value="150">Slower (150 words-per-minute)</option>
-        <option value="200">Default (200 words-per-minute)</option>
-        <option value="250">Faster (250 words-per-minute)</option>
-        <option value="300">Fast (300 words-per-minute)</option>
-        <option value="300">Fastest (450 words-per-minute)</option>
-        <option value="400">Speed-reader (600 words-per-minute)</option>
+        <option value="100" data-i18n-id="optionsReadingSpeedSlow"></option>
+        <option value="150" data-i18n-id="optionsReadingSpeedSlower"></option>
+        <option value="200" data-i18n-id="optionsReadingSpeedDefault"></option>
+        <option value="250" data-i18n-id="optionsReadingSpeedFaster"></option>
+        <option value="300" data-i18n-id="optionsReadingSpeedFast"></option>
+        <option value="450" data-i18n-id="optionsReadingSpeedFastest"></option>
+        <option value="600" data-i18n-id="optionsReadingSpeedSpeedReader"></option>
       </select>
     </div>
   </div>
 
-
-  <script src="options.js"></script>
+  <script src="./options.mjs" type="module"></script>
 </body>
 </html>

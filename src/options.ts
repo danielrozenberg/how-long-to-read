@@ -1,10 +1,11 @@
+import { $ } from './document/helper';
+import { initializeI18n } from './document/i18n';
+
 import type { Browser } from 'webextension-polyfill';
 
 declare const browser: Browser;
 
-const wordsPerMinuteElement = document.getElementById(
-  'wordsPerMinute',
-) as HTMLSelectElement;
+const wordsPerMinuteElement = $('#wordsPerMinute') as HTMLSelectElement;
 
 wordsPerMinuteElement.addEventListener('change', async () => {
   await browser.storage.sync.set({
@@ -13,8 +14,10 @@ wordsPerMinuteElement.addEventListener('change', async () => {
 });
 
 document.addEventListener('DOMContentLoaded', async () => {
-  const { wordsPerMinute } = await browser.storage.sync.get({
+  initializeI18n();
+
+  const { wordsPerMinute } = (await browser.storage.sync.get({
     wordsPerMinute: 200,
-  });
-  wordsPerMinuteElement.value = wordsPerMinute;
+  })) as Record<string, number>;
+  wordsPerMinuteElement.value = wordsPerMinute.toFixed(0);
 });
