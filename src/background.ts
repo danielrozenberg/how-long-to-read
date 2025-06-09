@@ -1,3 +1,5 @@
+import { hasHostsPermission } from './common/host-permission';
+
 import type { Browser, Runtime } from 'webextension-polyfill';
 import type { StatsMessage } from './types/messages';
 
@@ -80,5 +82,15 @@ export async function backgroundMessageListener(
     await browser.tabs.sendMessage(tabId, 'estimateReadingTime');
   });
 }
+
+browser.runtime.onInstalled.addListener(async () => {
+  console.info('[browser.runtime.onInstalled] extension installed or updated');
+  if (!(await hasHostsPermission())) {
+    await browser.tabs.create({
+      active: true,
+      url: browser.runtime.getURL('welcome.html'),
+    });
+  }
+});
 
 browser.runtime.onMessage.addListener(backgroundMessageListener);

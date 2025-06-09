@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title data-i18n-id="welcomeTitle"></title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    :root {
+      color-scheme: light dark;
+    }
+
+    html {
+      background: light-dark(hsl(0, 0%, 100%), hsl(228, 3%, 17%));
+    }
+
+    body {
+      color: light-dark(hsl(0, 0%, 10%), hsl(240, 2%, 90%));
+      font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji;
+      line-height: 1.4;
+      margin: 0 auto;
+      max-width: 40em;
+    }
+
+    h1 {
+      border-bottom: 1px solid light-dark(hsl(0, 0%, 50%), hsl(230, 3%, 60%));
+      font-size: 1.6rem;
+      font-weight: 600;
+      padding-bottom: 4px;
+    }
+
+    h2 {
+      border-bottom: 1px solid light-dark(hsl(0, 0%, 94%), hsl(220, 3%, 22%));
+      font-size: 1.2rem;
+      font-weight: 200;
+      margin: 0;
+      padding-bottom: 2px;
+    }
+
+    section {
+      background: light-dark(hsl(36, 8%, 96%), hsl(228, 3%, 14%));
+      border: 1px solid light-dark(hsl(0, 0%, 94%), hsl(220, 3%, 22%));
+      border-radius: 8px;
+      margin-bottom: 1rem;
+      transition: all .2s ease-in-out;
+
+      & h2 {
+        padding-inline: 1rem;
+      }
+
+      & p {
+        padding-inline: 2rem;
+      }
+
+      &[inert] {
+        &>* {
+          filter: blur(1px) grayscale(75%);
+          opacity: .5;
+          pointer-events: none;
+        }
+
+        &:has(~ section:not([inert]))::after {
+          content: "\2714";
+          display: block;
+          height: 0;
+          inset: auto 1rem 2.2rem auto;
+          opacity: .5;
+          position: relative;
+          text-align: end;
+        }
+      }
+    }
+
+    button,
+    select {
+      background: light-dark(hsl(207, 80%, 49%), hsl(40, 52%, 71%));
+      border: 0;
+      border-radius: 4px;
+      color: light-dark(#fff, #2a2b2d);
+      padding: .3rem .8rem;
+      transition: filter .2s ease-in-out, opacity .2s ease-in-out;
+
+      &:hover {
+        background: light-dark(hsl(207, 94%, 54%), hsl(40, 77%, 78%));
+      }
+
+      &:active {
+        background: light-dark(hsl(207, 80%, 44%), hsl(40, 38%, 64%));
+      }
+
+      &:disabled {
+        filter: blur(1px) grayscale(75%);
+        opacity: .5;
+        pointer-events: none;
+      }
+    }
+
+    .action-button {
+      margin: 1rem auto .8rem;
+      width: fit-content;
+    }
+
+    .action-dropdown {
+      display: flex;
+      flex-flow: row;
+      gap: .6rem;
+      margin: 1rem 2rem .8rem;
+
+      & select {
+        flex-grow: 1;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1 data-i18n-id="extensionName"></h1>
+  <p data-i18n-id="welcomeDescription"></p>
+
+  <section id="host-permission-section" inert>
+    <h2 data-i18n-id="welcomeHostsPermissionSectionTitle"></h2>
+    <p data-i18n-id="welcomeHostsPermissionSectionDescription"></p>
+    <div class="action-button">
+      <button id="grant-hosts-permission" data-i18n-id="welcomeHostsPermissionActionButton"></button>
+    </div>
+  </section>
+
+  <section id="settings-section" inert>
+    <h2 data-i18n-id="welcomeSettingsSectionTitle"></h2>
+    <div class="action-dropdown">
+      <label for="wordsPerMinute" data-i18n-id="optionsReadingSpeedLabel"></label>
+      <select id="wordsPerMinute">
+        <option value="100" data-i18n-id="optionsReadingSpeedSlow"></option>
+        <option value="150" data-i18n-id="optionsReadingSpeedSlower"></option>
+        <option value="200" data-i18n-id="optionsReadingSpeedDefault"></option>
+        <option value="250" data-i18n-id="optionsReadingSpeedFaster"></option>
+        <option value="300" data-i18n-id="optionsReadingSpeedFast"></option>
+        <option value="450" data-i18n-id="optionsReadingSpeedFastest"></option>
+        <option value="600" data-i18n-id="optionsReadingSpeedSpeedReader"></option>
+      </select>
+    </div>
+    <div class="action-button">
+      <button id="close" data-i18n-id="welcomeCloseButton"></button>
+    </div>
+  </section>
+
+  <script src="./welcome.mjs" type="module"></script>
+</body>
+</html>

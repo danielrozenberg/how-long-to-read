@@ -12,7 +12,7 @@
     "build:static": "cp -r static/* dist/",
     "build:esbuild": "npm run build:esbuild:content && npm run build:esbuild:others",
     "build:esbuild:content": "esbuild src/content.ts --bundle --format=iife --sourcemap --outdir=dist/",
-    "build:esbuild:others": "esbuild src/background.ts src/options.ts --bundle --format=esm --sourcemap --outdir=dist/ --out-extension:.js=.mjs",
+    "build:esbuild:others": "esbuild $(ls src/*.ts | grep -v content.ts) --bundle --format=esm --sourcemap --outdir=dist/ --out-extension:.js=.mjs",
     "clean": "rm -rf dist/ && mkdir dist/",
     "lint": "eslint .",
     "test": "jest"

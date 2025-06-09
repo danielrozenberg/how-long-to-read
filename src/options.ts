@@ -1,3 +1,4 @@
+import { getWordsPerMinute, setWordsPerMinute } from './common/settings';
 import { $ } from './document/helper';
 import { initializeI18n } from './document/i18n';
 
@@ -5,19 +6,22 @@ import type { Browser } from 'webextension-polyfill';
 
 declare const browser: Browser;
 
-const wordsPerMinuteElement = $('#wordsPerMinute') as HTMLSelectElement;
+const wordsPerMinuteSelector = $('#wordsPerMinute') as HTMLSelectElement;
 
-wordsPerMinuteElement.addEventListener('change', async () => {
-  await browser.storage.sync.set({
-    wordsPerMinute: Number(wordsPerMinuteElement.value),
-  });
+async function updateSettingsSection() {
+  const wordsPerMinute = await getWordsPerMinute();
+  wordsPerMinuteSelector.value = wordsPerMinute.toFixed(0);
+}
+
+browser.storage.sync.onChanged.addListener(async () => {
+  await updateSettingsSection();
+});
+
+wordsPerMinuteSelector.addEventListener('change', async () => {
+  await setWordsPerMinute(parseInt(wordsPerMinuteSelector.value, 10));
 });
 
 document.addEventListener('DOMContentLoaded', async () => {
   initializeI18n();
-
-  const { wordsPerMinute } = (await browser.storage.sync.get({
-    wordsPerMinute: 200,
-  })) as Record<string, number>;
-  wordsPerMinuteElement.value = wordsPerMinute.toFixed(0);
+  await updateSettingsSection();
 });

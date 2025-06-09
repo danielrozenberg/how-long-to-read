@@ -7,6 +7,30 @@
     "message": "Estimates how long it would take to read a web page",
     "description": "Description of the extension."
   },
+  "welcomeDescription": {
+    "message": "Let's set up this extension!",
+    "description": "Description of the welcome page."
+  },
+  "welcomeHostsPermissionSectionTitle": {
+    "message": "Step 1: Permission to access your tabs",
+    "description": "Title of the section explaining the hosts permission."
+  },
+  "welcomeHostsPermissionSectionDescription": {
+    "message": "This extension needs permission to access your tabs to be able to display your reading time.",
+    "description": "Description of the hosts permission section."
+  },
+  "welcomeHostsPermissionActionButton": {
+    "message": "Grant permission",
+    "description": "Button text to grant hosts permission."
+  },
+  "welcomeSettingsSectionTitle": {
+    "message": "Step 2: Choose your reading speed",
+    "description": "Title of the section explaining the settings."
+  },
+  "welcomeCloseButton": {
+    "message": "Close",
+    "description": "Button text to close the welcome page."
+  },
   "optionsReadingSpeedLabel": {
     "message": "Reading speed",
     "description": "Label for the reading speed option in the settings."
